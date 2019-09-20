@@ -8,6 +8,7 @@ Calling `enableSmartFocusOutlines()` will set up listeners to toggle showing foc
 
 ## Implementation:
 
+JS
 ```js
 function hasClass (el, className) {
   return el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
@@ -33,6 +34,7 @@ function enableSmartFocusOutlines () {
 }
 ```
 
+SASS
 ```sass
 \:global
   *
