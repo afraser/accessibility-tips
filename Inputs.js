@@ -5,10 +5,11 @@
 
 // passing ids sucks
 
-const Input = ({ id, label, ...inputProps }) =>
+const Input = ({ id, error, label, ...inputProps }) =>
   <React.Fragment>
     <label for={id}>{label}</label>
-    <input id={id} {...inputProps} />
+    <input id={id} aria-invalid={!!error} {...inputProps} />
+    <FormError error={error}/>
   </React.Fragment>
 
 
@@ -17,19 +18,21 @@ const Input = ({ id, label, ...inputProps }) =>
 
 // WRAP your component in a <label>
 
-const Input = ({ label, ...inputProps }) =>
+const Input = ({ label, error, ...inputProps }) =>
   <label>
     <div>{label}</div>
-    <input {...inputProps} />
+    <input aria-invalid={!!error} {...inputProps} />
+    <FormError error={error}/>
   </label>
 
 
-const Select = ({ label, children, options, ...inputProps }) =>
+const Select = ({ label, children, options, error, ...inputProps }) =>
   <label>
     <div>{label}</div>
-    <select {...inputProps}>
+    <select aria-invalid={!!error} {...inputProps}>
       { children || renderOptions(options)}
     </select>
+    <FormError error={error}/>
   </label>
 
 
@@ -40,7 +43,7 @@ const Checkbox = ({ label, ...inputProps}) =>
   </label>
 
 
-const RadioGroup = ({ options, value, onChange, label, className, name}) =>
+const RadioGroup = ({ options, value, onChange, label, className, name, error }) =>
   <fieldset>
     <div>{label}</div>
     {
@@ -48,6 +51,7 @@ const RadioGroup = ({ options, value, onChange, label, className, name}) =>
         <label key={option.label}>
           <input
             type='radio'
+            aria-invalid={!!error}
             checked={option.value === value}
             value={option.value}
             onChange={onChange}
@@ -57,4 +61,5 @@ const RadioGroup = ({ options, value, onChange, label, className, name}) =>
         </label>
       )
     }
+    <FormError error={error}/>
   </fieldset>
