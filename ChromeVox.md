@@ -1,6 +1,4 @@
-//
-// 5. Meet ChromeVox
-//
+# Try ChromeVox
 
 Install the extension:
 https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en-US
