@@ -1,31 +1,38 @@
-//
-// Button
-//
+# Button
 
 
-// Desired API
+## Desired API
+```js
 <Button>Make it so</Button>
 <Button busy>Make it so</Button>
 <Button disabled>Make it so</Button>
+```
 
-// Button as a link
+#### Button as a link
+```js
 <Button href='http://rocketinsights.com' target='_blank'>
   rocketinsights.com
 </Button>
+```
 
-// Submit button
+#### Submit button
+Note: we want to opt-in to submit behavior so other buttons that appear in a form don't accidentally submit it. This is not default behavior for buttons without a `type` attribute.
+```js
 <form onSubmit={handleSubmit}>
   <Input {...} />
   <Button type='submit'>Send into space</Button>
 </form>
+```
 
-// Button as a router link
+#### Button as a router link
+```js
 <Button Component={RouterLink} to='home'>Home</Button>
+```
 
 
+## Implementation
 
-
-
+```js
 export default function Button ({
   block, busy, children, className, Component, disabled, href, onClick, onKeyDown, role, type = 'button',
   ...rest
@@ -75,3 +82,4 @@ export default function Button ({
     </BtnComponent>
   )
 }
+```
