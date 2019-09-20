@@ -3,26 +3,30 @@
 //
 
 
-// passing ids sucks
+// Passing ids sucks...
+// don't do this
 
 const Input = ({ id, error, label, ...inputProps }) =>
   <React.Fragment>
-    <label for={id}>{label}</label>
+    <label htmlFor={id}>{label}</label>
     <input id={id} aria-invalid={!!error} {...inputProps} />
     <FormError error={error}/>
   </React.Fragment>
 
-
+// undesireable result
 <Input id={completelyAndTotallyUniqueName} {...etc} />
 
 
-// WRAP your component in a <label>
+// DO wrap your component in label
+// Note: putting error and other text (eg: helper text) inside the <label> will cause it 
+// to be read by screenreaders on focus. This may or may not be desireable. 
+// Try out different things in ChromeVox before committing to an implementation.
 
 const Input = ({ label, error, ...inputProps }) =>
   <label>
     <div>{label}</div>
     <input aria-invalid={!!error} {...inputProps} />
-    <FormError error={error}/>
+    <FormError error={error} /> 
   </label>
 
 
