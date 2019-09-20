@@ -33,6 +33,17 @@ function enableSmartFocusOutlines () {
 }
 ```
 
+```sass
+\:global
+  *
+    outline-color: default
+
+  body.hide-focus-outlines
+    button, select, a, input, textarea, [tabindex]
+      &:focus
+        outline: none
+```
+
 ## Usage (in your app entrypoint):
 
 ```js
